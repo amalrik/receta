@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 5
+  username: user
+  password: pass
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: receta_development
+
+test:
+  <<: *default
+  database: receta_test
+
+
+production:
+  <<: *default
+  database: receta_production
+  username: receta
+  password: <%= ENV['RECETA_DATABASE_PASSWORD'] %>
